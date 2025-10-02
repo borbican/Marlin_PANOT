@@ -2,7 +2,7 @@
 #pragma once
 
 #define STRING_CONFIG_H_AUTHOR "(Code Copilot, Ender3V1 4.2.2)"
-#define CUSTOM_MACHINE_NAME    "Ender-3 V1 (4.2.2)"
+#define CUSTOM_MACHINE_NAME    "Ender-3 V1 (4.2.2 Panot Build)"
 
 // Serial
 #define SERIAL_PORT 1
@@ -50,9 +50,9 @@
 #define E0_DRIVER_TYPE A4988
 
 // Endstops
-#define X_MIN_ENDSTOP_HIT_STATE HIGH
-#define Y_MIN_ENDSTOP_HIT_STATE HIGH
-#define Z_MIN_ENDSTOP_HIT_STATE HIGH
+#define X_MIN_ENDSTOP_HIT_STATE LOW
+#define Y_MIN_ENDSTOP_HIT_STATE LOW
+#define Z_MIN_ENDSTOP_HIT_STATE LOW
 
 // Leveling (Manual Mesh 4×4 + edit single points)
 #define MESH_BED_LEVELING
