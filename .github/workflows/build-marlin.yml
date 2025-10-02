@@ -1,7 +1,4 @@
-# ==============================
-# File: .github/workflows/build-marlin.yml
-# Build firmware.bin for Ender-3 V1 (Creality 4.2.2) with 4x4 MBL
-# ==============================
+# .github/workflows/build-marlin.yml
 name: Build Marlin (Ender3V1 4.2.2 - 4x4 MBL)
 
 on:
@@ -10,6 +7,9 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+
+env:
+  PIO_ENV: STM32F103RE_creality   # ✅ correct env for Creality 4.2.2
 
 jobs:
   build:
@@ -26,11 +26,15 @@ jobs:
       - name: Install PlatformIO
         run: pip install -U platformio
 
-      - name: Build (STM32F103RE_creality)
-        run: pio run -e STM32F103RE_creality
+      - name: Build (${{ env.PIO_ENV }})
+        run: pio run -e ${{ env.PIO_ENV }}
+
+      - name: List build outputs
+        run: ls -la .pio/build/${{ env.PIO_ENV }} || true
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Ender3V1_422_4x4MBL
-          path: .pio/build/STM32F103RE_creality/firmware.bin
+          name: Ender3V1_422_4x4MBL_${{ env.PIO_ENV }}
+          path: .pio/build/${{ env.PIO_ENV }}/firmware.bin
+          if-no-files-found: error
