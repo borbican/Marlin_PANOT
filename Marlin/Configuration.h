@@ -1224,12 +1224,6 @@
 
 // @section endstops
 
-//===========================================================================
-//============================== Endstop Settings ===========================
-//===========================================================================
-
-// @section endstops
-
 // Enable pullup for all endstops to prevent a floating state
 #define ENDSTOPPULLUPS
 #if DISABLED(ENDSTOPPULLUPS)
@@ -1285,11 +1279,11 @@
  * Set to the state (HIGH or LOW) that applies to each endstop.
  * Stock Ender-3 V1 switches = NO → TRIGGERED is LOW for MIN endstops.
  */
-#define X_MIN_ENDSTOP_HIT_STATE LOW     // <- changed from HIGH
+#define X_MIN_ENDSTOP_HIT_STATE HIGH    
 #define X_MAX_ENDSTOP_HIT_STATE HIGH
-#define Y_MIN_ENDSTOP_HIT_STATE LOW     // <- changed from HIGH
+#define Y_MIN_ENDSTOP_HIT_STATE HIGH    
 #define Y_MAX_ENDSTOP_HIT_STATE HIGH
-#define Z_MIN_ENDSTOP_HIT_STATE LOW     // <- changed from HIGH
+#define Z_MIN_ENDSTOP_HIT_STATE HIGH     
 #define Z_MAX_ENDSTOP_HIT_STATE HIGH
 #define I_MIN_ENDSTOP_HIT_STATE HIGH
 #define I_MAX_ENDSTOP_HIT_STATE HIGH
@@ -1955,8 +1949,8 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#define X_BED_SIZE 235
+#define Y_BED_SIZE 235
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
