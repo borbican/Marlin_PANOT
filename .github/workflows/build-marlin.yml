@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  PIO_ENV: STM32F103RE_creality   # ✅ correct env for Creality 4.2.2
+  PIO_ENV: STM32F103RE_creality
 
 jobs:
   build:
@@ -29,12 +29,17 @@ jobs:
       - name: Build (${{ env.PIO_ENV }})
         run: pio run -e ${{ env.PIO_ENV }}
 
-      - name: List build outputs
-        run: ls -la .pio/build/${{ env.PIO_ENV }} || true
+      - name: Show outputs
+        run: |
+          echo "Listing .pio/build/${{ env.PIO_ENV }}/"
+          ls -la .pio/build/${{ env.PIO_ENV }} || true
+          echo "All .bin files under .pio/build:"
+          find .pio/build -type f -name "*.bin" -maxdepth 3 -print || true
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: Ender3V1_422_4x4MBL_${{ env.PIO_ENV }}
-          path: .pio/build/${{ env.PIO_ENV }}/firmware.bin
+          path: |
+            .pio/build/${{ env.PIO_ENV }}/*.bin
           if-no-files-found: error
