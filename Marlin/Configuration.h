@@ -11,7 +11,6 @@
 // Board
 #define MOTHERBOARD BOARD_CREALITY_V4
 #define RET6_12864_LCD
-#define POWER_SUPPLY 0
 
 // Thermal
 #define TEMP_SENSOR_0 1
