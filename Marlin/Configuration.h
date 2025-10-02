@@ -2,7 +2,7 @@
 #pragma once
 
 #define STRING_CONFIG_H_AUTHOR "(Code Copilot, Ender3V1 4.2.2)"
-#define CUSTOM_MACHINE_NAME    "Ender-3 V1 (4.2.2 Panot Build)"
+#define CUSTOM_MACHINE_NAME    "Ender-3"
 
 // Serial
 #define SERIAL_PORT 1
@@ -48,11 +48,6 @@
 #define Y_DRIVER_TYPE A4988
 #define Z_DRIVER_TYPE A4988
 #define E0_DRIVER_TYPE A4988
-
-// Endstops
-#define X_MIN_ENDSTOP_HIT_STATE LOW
-#define Y_MIN_ENDSTOP_HIT_STATE LOW
-#define Z_MIN_ENDSTOP_HIT_STATE LOW
 
 // Leveling (Manual Mesh 4×4 + edit single points)
 #define MESH_BED_LEVELING
@@ -1229,10 +1224,16 @@
 
 // @section endstops
 
+//===========================================================================
+//============================== Endstop Settings ===========================
+//===========================================================================
+
+// @section endstops
+
 // Enable pullup for all endstops to prevent a floating state
 #define ENDSTOPPULLUPS
 #if DISABLED(ENDSTOPPULLUPS)
-  // Disable ENDSTOPPULLUPS to set pullups individually
+  // (leave per-endstop pullups commented)
   //#define ENDSTOPPULLUP_XMIN
   //#define ENDSTOPPULLUP_YMIN
   //#define ENDSTOPPULLUP_ZMIN
@@ -1257,7 +1258,7 @@
 // Enable pulldown for all endstops to prevent a floating state
 //#define ENDSTOPPULLDOWNS
 #if DISABLED(ENDSTOPPULLDOWNS)
-  // Disable ENDSTOPPULLDOWNS to set pulldowns individually
+  // (leave per-endstop pulldowns commented)
   //#define ENDSTOPPULLDOWN_XMIN
   //#define ENDSTOPPULLDOWN_YMIN
   //#define ENDSTOPPULLDOWN_ZMIN
@@ -1282,12 +1283,13 @@
 /**
  * Endstop "Hit" State
  * Set to the state (HIGH or LOW) that applies to each endstop.
+ * Stock Ender-3 V1 switches = NO → TRIGGERED is LOW for MIN endstops.
  */
-#define X_MIN_ENDSTOP_HIT_STATE HIGH
+#define X_MIN_ENDSTOP_HIT_STATE LOW     // <- changed from HIGH
 #define X_MAX_ENDSTOP_HIT_STATE HIGH
-#define Y_MIN_ENDSTOP_HIT_STATE HIGH
+#define Y_MIN_ENDSTOP_HIT_STATE LOW     // <- changed from HIGH
 #define Y_MAX_ENDSTOP_HIT_STATE HIGH
-#define Z_MIN_ENDSTOP_HIT_STATE HIGH
+#define Z_MIN_ENDSTOP_HIT_STATE LOW     // <- changed from HIGH
 #define Z_MAX_ENDSTOP_HIT_STATE HIGH
 #define I_MIN_ENDSTOP_HIT_STATE HIGH
 #define I_MAX_ENDSTOP_HIT_STATE HIGH
@@ -1303,9 +1305,10 @@
 #define W_MAX_ENDSTOP_HIT_STATE HIGH
 #define Z_MIN_PROBE_ENDSTOP_HIT_STATE HIGH
 
-// Enable this feature if all enabled endstop pins are interrupt-capable.
-// This will remove the need to poll the interrupt pins, saving many CPU cycles.
+// Optional:
 //#define ENDSTOP_INTERRUPTS_FEATURE
+//#define ENDSTOP_NOISE_THRESHOLD 2
+//#define DETECT_BROKEN_ENDSTOP
 
 /**
  * Endstop Noise Threshold
