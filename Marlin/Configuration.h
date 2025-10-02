@@ -53,9 +53,9 @@
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
 #define USE_ZMIN_PLUG
-#define X_MIN_ENDSTOP_INVERTING true
-#define Y_MIN_ENDSTOP_INVERTING true
-#define Z_MIN_ENDSTOP_INVERTING true
+#define X_MIN_ENDSTOP_HIT_STATE HIGH
+#define Y_MIN_ENDSTOP_HIT_STATE HIGH
+#define Z_MIN_ENDSTOP_HIT_STATE HIGH
 
 // Leveling (Manual Mesh 4×4 + edit single points)
 #define MESH_BED_LEVELING
