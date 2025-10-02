@@ -26,8 +26,8 @@ jobs:
       - name: Install PlatformIO
         run: pip install -U platformio
 
-      - name: Build (STM32F103RET6_creality)
-        run: pio run -e STM32F103RET6_creality
+      - name: Build (STM32F103RE_creality)
+        run: pio run -e STM32F103RE_creality
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
