@@ -1,0 +1,36 @@
+# ==============================
+# File: .github/workflows/build-marlin.yml
+# Build firmware.bin for Ender-3 V1 (Creality 4.2.2) with 4x4 MBL
+# ==============================
+name: Build Marlin (Ender3V1 4.2.2 - 4x4 MBL)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install PlatformIO
+        run: pip install -U platformio
+
+      - name: Build (STM32F103RET6_creality)
+        run: pio run -e STM32F103RET6_creality
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Ender3V1_422_4x4MBL
+          path: .pio/build/STM32F103RET6_creality/firmware.bin
