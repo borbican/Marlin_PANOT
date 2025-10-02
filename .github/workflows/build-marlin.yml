@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Ender3V1_422_4x4MBL
-          path: .pio/build/STM32F103RET6_creality/firmware.bin
+          path: .pio/build/STM32F103RE_creality/firmware.bin
