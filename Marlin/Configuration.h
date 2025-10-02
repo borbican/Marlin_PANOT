@@ -69,7 +69,7 @@
 // Tramming Wizard
 #define LCD_BED_TRAMMING
 #define BED_TRAMMING_INSET_LFRB 30
-#define LEVEL_CORNERS_Z_HOP  4
+#define BED_TRAMMING_Z_HOP  4
 
 // EEPROM
 #define EEPROM_SETTINGS
