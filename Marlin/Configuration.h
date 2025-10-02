@@ -67,7 +67,7 @@
 #define ENABLE_LEVELING_FADE_HEIGHT
 
 // Tramming Wizard
-#define LEVEL_BED_CORNERS
+#define LCD_BED_TRAMMING
 #define BED_TRAMMING_INSET_LFRB 30
 #define LEVEL_CORNERS_Z_HOP  4
 
@@ -3195,7 +3195,7 @@
 //
 // Connect to EXP1 on RAMPS and compatible boards.
 //
-//#define CR10_STOCKDISPLAY
+#define CR10_STOCKDISPLAY
 
 //
 // Ender-2 OEM display, a variant of the MKS_MINI_12864
